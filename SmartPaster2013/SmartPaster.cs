@@ -152,7 +152,7 @@ namespace SmartPaster2013
                 {
                     sb.Append(sbName + ".AppendLine(");
                     sb.Append("@" + qChr);
-                    sb.Append(line.Replace("\t", "\\t"));
+                    sb.Append(line);
                     sb.AppendLine(qChr + ");");
                 }
             }
