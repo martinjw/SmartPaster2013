@@ -6,7 +6,7 @@
     <Description xml:space="preserve">Paste clipboard into comments or strings in C#, VB</Description>
     <MoreInfo>https://github.com/martinjw/SmartPaster2013</MoreInfo>
     <License>License.txt</License>
-    <Icon>Package.ico</Icon>
+    <Icon>Resources/Package.ico</Icon>
     <Tags>PasteAs Verbatim StringBuilder Comment</Tags>
   </Metadata>
   <Installation InstalledByMsi="false">
