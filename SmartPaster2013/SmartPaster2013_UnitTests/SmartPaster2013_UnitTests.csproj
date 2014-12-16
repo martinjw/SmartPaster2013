@@ -62,6 +62,7 @@
     <!---->
     <Compile Include="MenuItemTests\MenuItemCallback.cs" />
     <Compile Include="MenuItemTests\UIShellServiceMock.cs" />
+    <Compile Include="SmartFormatterTests.cs" />
     <!---->
     <!---->
     <!---->

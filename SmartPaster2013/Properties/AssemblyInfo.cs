@@ -14,8 +14,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("SmartPaster2013")]
 [assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]   
-[assembly: ComVisible(false)]     
+[assembly: AssemblyCulture("")]
+[assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: NeutralResourcesLanguage("en-US")]
 
@@ -29,8 +29,8 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
 
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
 
 [assembly: InternalsVisibleTo("SmartPaster2013_IntegrationTests, PublicKey=002400000480000094000000060200000024000052534131000400000100010027ba1044a9cff13efea75ee0f830422b00274a6f7d38ac224c0c5a2ef11ae373b6102a0a17c561292c645a2aebb9266ff3c89d30faa7757315e7702647910625157e8b5c648522d5b206b841b9d2d4ae9ea904527ddeff74b4a498181c51c635e7d76310157c327aee3dfae846720c8c161b2bc551707e4f3de7fb6f92e7f1ca")]
 [assembly: InternalsVisibleTo("SmartPaster2013_UnitTests, PublicKey=002400000480000094000000060200000024000052534131000400000100010027ba1044a9cff13efea75ee0f830422b00274a6f7d38ac224c0c5a2ef11ae373b6102a0a17c561292c645a2aebb9266ff3c89d30faa7757315e7702647910625157e8b5c648522d5b206b841b9d2d4ae9ea904527ddeff74b4a498181c51c635e7d76310157c327aee3dfae846720c8c161b2bc551707e4f3de7fb6f92e7f1ca")]
