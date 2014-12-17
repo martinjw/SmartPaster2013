@@ -8,8 +8,8 @@ namespace SmartPaster2013
     {
         public const uint cmdidPasteAsComment = 0x100;
         public const uint cmdidPasteAsString = 0x101;
-        public const uint cmdidPasteAsStringBuilder = 0x102;
-
+        public const uint cmdidPasteAsVerbatimString = 0x102;
+        public const uint cmdidPasteAsStringBuilder = 0x103;
 
     };
 }

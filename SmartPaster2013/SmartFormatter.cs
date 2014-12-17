@@ -6,6 +6,7 @@ namespace SmartPaster2013
 {
     public static class SmartFormatter
     {
+        private const string Quote = "\"";
 
         /// <summary>
         /// Stringinizes text passed to it for use in C#
@@ -14,29 +15,60 @@ namespace SmartPaster2013
         /// <returns>C# Stringinized text</returns>
         public static string StringinizeInCs(string txt)
         {
-            //c# quote character -- really just a "
-            const string qChr = "\"";
-
             //sb to work with
             var sb = new StringBuilder(txt);
 
             //escape appropriately
             //escape the quotes with ""
-            sb.Replace(qChr, qChr + qChr);
+            sb.Replace(Quote, Quote + Quote);
 
             //insert " at beginning and end
-            sb.Insert(0, "@" + qChr);
-            sb.Append(qChr);
+            sb.Insert(0, "@" + Quote);
+            sb.Append(Quote);
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Literallies the text in C#.
+        /// </summary>
+        /// <param name="txt">Literally, the text to be literallized.</param>
+        /// <returns></returns>
+        public static string LiterallyInCs(string txt)
+        {
+            //escape appropriately
+            //escape the quotes with ""
+            txt = txt.Replace(Quote, "\\\"")
+                .Replace("\t", "\\t")
+                .Replace("\r", "\\r")
+                .Replace("\n", "\\n")
+                .Replace("\\r\\n", "\" + Environment.NewLine + \r\n\"");
+
+            return Quote + txt + Quote;
+        }
+
+        /// <summary>
+        /// Stringinizes the text in vb (VB14 verbatim).
+        /// </summary>
+        /// <param name="txt">The text.</param>
+        /// <returns></returns>
         public static string StringinizeInVb(string txt)
         {
-            //quote character
-            const string qChr = "\"";
-
             //double-up internal quotes
-            txt = txt.Replace(qChr, qChr + qChr);
+            txt = txt.Replace(Quote, Quote + Quote);
+
+            //vb14 (vs2015+) supports verbatim strings
+            return Quote + txt + Quote;
+        }
+
+        /// <summary>
+        /// Literal VB (actually in C#, wat...).  
+        /// </summary>
+        /// <param name="txt">The text.</param>
+        /// <returns></returns>
+        public static string LiterallyInVb(string txt)
+        {
+            //double-up internal quotes
+            txt = txt.Replace(Quote, Quote + Quote);
 
             var firstLine = true;
             var sb = new StringBuilder();
@@ -50,10 +82,28 @@ namespace SmartPaster2013
                         firstLine = false;
                     else
                         sb.AppendLine(" & Environment.NewLine & _");
-                    sb.Append(qChr + line + qChr);
+                    sb.Append(Quote + line + Quote);
                 }
             }
 
+            return sb.ToString();
+        }
+
+        public static string CDataizeInVb(string txt)
+        {
+            const string cdataStart = "<![CDATA[";
+
+            const string cdataEnd = "]]>.Value";
+            var sb = new StringBuilder();
+
+            sb.AppendLine(cdataStart);
+            sb.AppendLine(txt);
+            sb.AppendLine(cdataEnd);
+
+            //add the dec statement
+            sb.Insert(0, "Dim s As String = " + Environment.NewLine);
+
+            //and return
             return sb.ToString();
         }
 
@@ -103,14 +153,11 @@ namespace SmartPaster2013
 
         public static string StringbuilderizeInCs(string txt, string sbName)
         {
-            //c# quote character -- really just a "
-            const string qChr = "\"";
-
             //sb to work with
             var sb = new StringBuilder(txt);
 
             //escape \,", and {}
-            sb.Replace(qChr, qChr + qChr);
+            sb.Replace(Quote, Quote + Quote);
 
             //process the passed string (txt), one line at a time
 
@@ -125,14 +172,14 @@ namespace SmartPaster2013
                 while ((line = reader.ReadLine()) != null)
                 {
                     sb.Append(sbName + ".AppendLine(");
-                    sb.Append("@" + qChr);
+                    sb.Append("@" + Quote);
                     sb.Append(line);
-                    sb.AppendLine(qChr + ");");
+                    sb.AppendLine(Quote + ");");
                 }
             }
 
             //TODO: Better '@"" + ' replacement to not cover inside strings
-            sb.Replace("@" + qChr + qChr + " + ", "");
+            sb.Replace("@" + Quote + Quote + " + ", "");
 
             //add the dec statement
             sb.Insert(0, "var " + sbName + " = new System.Text.StringBuilder(" + txt.Length + ");" + Environment.NewLine);
@@ -143,14 +190,11 @@ namespace SmartPaster2013
 
         public static string StringbuilderizeInVb(string txt, string sbName)
         {
-            //c# quote character -- really just a "
-            const string qChr = "\"";
-
             //sb to work with
             var sb = new StringBuilder(txt);
 
             //escape
-            sb.Replace(qChr, qChr + qChr);
+            sb.Replace(Quote, Quote + Quote);
 
             //dump the stringbuilder into a temp string
             var fullString = sb.ToString();
@@ -163,9 +207,9 @@ namespace SmartPaster2013
                 while ((line = reader.ReadLine()) != null)
                 {
                     sb.Append(sbName + ".AppendLine(");
-                    sb.Append(qChr);
+                    sb.Append(Quote);
                     sb.Append(line);
-                    sb.Append(qChr);
+                    sb.Append(Quote);
                     sb.AppendLine(")");
                 }
             }

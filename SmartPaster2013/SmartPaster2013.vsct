@@ -84,11 +84,18 @@
           <ButtonText>Paste As Comment</ButtonText>
         </Strings>
       </Button>
-      <Button guid="guidSmartPaster2013CmdSet" id="cmdidPasteAsString" priority="0x0100" type="Button">
+      <Button guid="guidSmartPaster2013CmdSet" id="cmdidPasteAsVerbatimString" priority="0x0100" type="Button">
         <Parent guid="guidSmartPaster2013CmdSet" id="SubMenu" />
         <Icon guid="guidSmartPaste" id="bmpPaste" />
         <Strings>
           <ButtonText>Paste As @String</ButtonText>
+        </Strings>
+      </Button>
+      <Button guid="guidSmartPaster2013CmdSet" id="cmdidPasteAsString" priority="0x0100" type="Button">
+        <Parent guid="guidSmartPaster2013CmdSet" id="SubMenu" />
+        <Icon guid="guidSmartPaste" id="bmpPaste" />
+        <Strings>
+          <ButtonText>Paste As Literal String</ButtonText>
         </Strings>
       </Button>
       <Button guid="guidSmartPaster2013CmdSet" id="cmdidPasteAsStringBuilder" priority="0x0100" type="Button">
@@ -131,7 +138,8 @@
       <IDSymbol name="MyMenuGroup" value="0x1020" />
       <IDSymbol name="cmdidPasteAsComment" value="0x0100" />
       <IDSymbol name="cmdidPasteAsString" value="0x0101" />
-      <IDSymbol name="cmdidPasteAsStringBuilder" value="0x0102" />
+      <IDSymbol name="cmdidPasteAsVerbatimString" value="0x0102" />
+      <IDSymbol name="cmdidPasteAsStringBuilder" value="0x0103" />
 
     </GuidSymbol>
 

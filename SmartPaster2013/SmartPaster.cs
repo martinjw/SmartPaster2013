@@ -82,8 +82,30 @@ namespace SmartPaster2013
         public void PasteAsString(DTE2 application)
         {
             Paste(application, IsVb(application) ?
-                SmartFormatter.StringinizeInVb(ClipboardText) :
-                SmartFormatter.StringinizeInCs(ClipboardText));
+                SmartFormatter.LiterallyInVb(ClipboardText) :
+                SmartFormatter.LiterallyInCs(ClipboardText));
+        }
+
+        /// <summary>
+        /// Pastes as verbatim string.
+        /// </summary>
+        /// <param name="application">The application.</param>
+        public void PasteAsVerbatimString(DTE2 application)
+        {
+            if (IsVb(application))
+            {
+                //vb14 has verbatim strings, otherwise do the CData trick
+                int version;
+                int.TryParse(application.Version, out version);
+
+                Paste(application,
+                    version < 14
+                        ? SmartFormatter.CDataizeInVb(ClipboardText)
+                        : SmartFormatter.StringinizeInVb(ClipboardText));
+                return;
+            }
+            //c#
+            Paste(application, SmartFormatter.StringinizeInCs(ClipboardText));
         }
 
 
