@@ -37,11 +37,13 @@ namespace SmartPaster2013
         {
             //escape appropriately
             //escape the quotes with ""
-            txt = txt.Replace(Quote, "\\\"")
-                .Replace("\t", "\\t")
-                .Replace("\r", "\\r")
-                .Replace("\n", "\\n")
-                .Replace("\\r\\n", "\" + Environment.NewLine + \r\n\"");
+            txt = txt.Trim() //ignore leading and trailing blank lines
+                .Replace(Quote, "\\\"") //escape quotes
+                .Replace("\t", "\\t") //escape tabs
+                .Replace("\r", "\\r") //cr
+                .Replace("\n", "\\n") //lf
+                .Replace("\\r\\n", "\" + Environment.NewLine + \r\n\"") //escaped crlf to Env.NewLine
+                .Replace("\"\" + ", ""); //"" + 
 
             return Quote + txt + Quote;
         }
@@ -69,24 +71,15 @@ namespace SmartPaster2013
         {
             //double-up internal quotes
             txt = txt.Replace(Quote, Quote + Quote);
+            txt = txt.Trim() //ignore leading and trailing blank lines
+                .Replace(Quote, Quote + Quote) //escape quotes
+                .Replace("\t", "\" & vbTab & \"") //explicit Tabs
+                .Replace("\r", "\" & vbCr & \"") //cr
+                .Replace("\n", "\" & vbLf & \"") //lf
+                .Replace("\" & vbCr & \"\" & vbLf & \"", "\" & vbCrLf & _\r\n\"") //escaped cr + lf to CrLf + vb line continuation
+                .Replace("\"\" & ", ""); //"" & 
 
-            var firstLine = true;
-            var sb = new StringBuilder();
-            //read line by line (may only be one) and quote
-            using (var stringReader = new StringReader(txt))
-            {
-                string line;
-                while ((line = stringReader.ReadLine()) != null)
-                {
-                    if (firstLine)
-                        firstLine = false;
-                    else
-                        sb.AppendLine(" & Environment.NewLine & _");
-                    sb.Append(Quote + line + Quote);
-                }
-            }
-
-            return sb.ToString();
+            return Quote + txt + Quote;
         }
 
         public static string CDataizeInVb(string txt)

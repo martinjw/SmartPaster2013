@@ -96,7 +96,11 @@ namespace SmartPaster2013
             {
                 //vb14 has verbatim strings, otherwise do the CData trick
                 int version;
-                int.TryParse(application.Version, out version);
+                var appVersion = application.Version;
+                var p = appVersion.IndexOf('.'); //12.0 in VS2013, but MSDN says dp is optional
+                if (p > 0) appVersion = appVersion.Substring(0, p);
+
+                int.TryParse(appVersion, out version);
 
                 Paste(application,
                     version < 14

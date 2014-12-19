@@ -45,6 +45,26 @@ This has a " + "\t tab and \"\" quotes but this \\t is not an escape\"", result)
             Assert.AreEqual("\"我给你一本书 。\" + Environment.NewLine + \r\n\"This has a \\t tab and \\\" quotes but this \\t is not an escape\"", result);
         }
 
+
+        [TestMethod]
+        public void TestLiteralStringWithEmptyLinesCs()
+        {
+            var result = SmartFormatter.LiterallyInCs(@"
+1
+
+2
+");
+
+            //should look like this
+            var s = "1" + Environment.NewLine +
+Environment.NewLine +
+"2";
+
+            //Tab and quote is escaped, line is turned into NewLine
+            Assert.AreEqual("\"1\" + Environment.NewLine + \r\nEnvironment.NewLine + \r\n\"2\"", result);
+        }
+
+
         [TestMethod]
         public void TestVerbatimStringVb()
         {
@@ -54,17 +74,32 @@ This has a " + "\t tab and \"\" quotes but this \\t is not an escape\"", result)
             Assert.AreEqual("\"我给你一本书 。\r\nThis has a \t tab and \"\" quotes but this \\t is not an escape\"", result);
         }
 
+
         [TestMethod]
         public void TestLiteralStringVb()
         {
             var result = SmartFormatter.LiterallyInVb(Original);
 
-            //No verbatim in VB up to 14, so we just use literals with Environment.NewLine and line continuation
+            //No verbatim in VB up to 14, so we just use literals with vbCrLf and line continuation
+            Assert.AreEqual("\"我给你一本书 。\" & vbCrLf & _\r\n\"This has a \" & vbTab & \" tab and \"\"\"\" quotes but this \\t is not an escape\"", result);
+        }
+
+
+        [TestMethod]
+        public void TestLiteralStringWithEmptyLinesVb()
+        {
+            var result = SmartFormatter.LiterallyInVb(@"
+1
+
+2
+");
+
+            //No verbatim in VB up to 14, so we just use literals with vbCrLf and line continuation
             //Arguably tab could be vbTab
             //You could use xml literals...
-            Assert.AreEqual(@"""我给你一本书 。"" & Environment.NewLine & _
-""This has a 	 tab and """" quotes but this \t is not an escape""", result);
+            Assert.AreEqual("\"1\" & vbCrLf & _\r\nvbCrLf & _\r\n\"2\"", result);
         }
+
 
         [TestMethod]
         public void TestCommentCs()
