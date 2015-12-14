@@ -2,6 +2,7 @@
 using System.Windows.Forms; //clipboard
 using EnvDTE;
 using EnvDTE80;
+using System.Text;
 
 namespace SmartPaster2013
 {
@@ -99,6 +100,25 @@ namespace SmartPaster2013
             else
                 text = ClipboardText;
             Paste(application, text);
+        }
+
+        public void PasteAsBytes(DTE2 application)
+        {
+            if (IsCxx(application) || IsCs(application))
+            {
+                var sb = new StringBuilder();
+                var count = 0;
+                foreach (var ch in ClipboardText)
+                {
+                    sb.AppendFormat("0x{0:x2}, ", (int)ch);
+                    if (++count == 16)
+                    {
+                        count = 0;
+                        sb.AppendLine();
+                    }
+                }
+                Paste(application, sb.ToString());
+            }
         }
 
         /// <summary>
