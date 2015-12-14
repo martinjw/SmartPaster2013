@@ -71,7 +71,15 @@ namespace SmartPaster2013
         {
             return application.ActiveWindow.Caption.EndsWith(".vb", StringComparison.OrdinalIgnoreCase);
         }
+        private static bool IsCs(DTE2 application)
+        {
+            return application.ActiveWindow.Caption.EndsWith(".cs", StringComparison.OrdinalIgnoreCase);
+        }
 
+        private static bool IsCxx(DTE2 application)
+        {
+            return application.ActiveDocument.Language == "C/C++";
+        }
         #region "Paste As ..."
 
         /// <summary>
@@ -81,9 +89,16 @@ namespace SmartPaster2013
         /// <param name="application">application to insert</param>
         public void PasteAsString(DTE2 application)
         {
-            Paste(application, IsVb(application) ?
-                SmartFormatter.LiterallyInVb(ClipboardText) :
-                SmartFormatter.LiterallyInCs(ClipboardText));
+            string text;
+            if (IsVb(application))
+                text = SmartFormatter.LiterallyInVb(ClipboardText);
+            else if (IsCs(application))
+                text = SmartFormatter.LiterallyInCs(ClipboardText);
+            else if (IsCxx(application))
+                text = SmartFormatter.LiterallyInCxx(ClipboardText);
+            else
+                text = ClipboardText;
+            Paste(application, text);
         }
 
         /// <summary>
