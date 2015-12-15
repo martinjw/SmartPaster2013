@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="233fade6-f9e1-4a0d-8784-089004c574fc" Version="1.1" Language="en-US" Publisher="Martin Willey" />
+    <Identity Id="233fade6-f9e1-4a0d-8784-089004c574fc" Version="1.2" Language="en-US" Publisher="Martin Willey" />
     <DisplayName>SmartPaster2013</DisplayName>
     <Description xml:space="preserve">Paste clipboard into comments or strings in C#, VB, C++</Description>
     <MoreInfo>https://github.com/martinjw/SmartPaster2013</MoreInfo>
@@ -10,8 +10,9 @@
     <Tags>PasteAs Verbatim StringBuilder Comment</Tags>
   </Metadata>
   <Installation InstalledByMsi="false">
-    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[12.0]" />
-    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[14.0]" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,)" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[12.0,)" />
+    <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[14.0,)" />
   </Installation>
   <Dependencies>
     <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
