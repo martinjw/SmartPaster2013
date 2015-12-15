@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace SmartPaster2013
@@ -46,6 +47,13 @@ namespace SmartPaster2013
                 .Replace("\"\" + ", ""); //"" + 
 
             return Quote + txt + Quote;
+        }
+
+        public static string LiterallyInCxx(string txt)
+        {
+            var lines = from line in txt.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None)
+                        select "\"" + line.Replace("\"", "\\\"").Replace("\t", @"\t") + "\"";
+            return String.Join("\r\n", lines);
         }
 
         /// <summary>
