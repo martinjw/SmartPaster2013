@@ -9,11 +9,13 @@ A "Paste As" right-click option that allows clipboard text to be:
 * Paste as Literal String (regular string literal)
 * Paste as @String (in C#, verbatim string; in VB, CData or VB14 multi-line strings depending on version)
 * Paste as StringBuilder
+* Paste as Byte Array
 
 On Visual Studio Gallery:
 http://visualstudiogallery.msdn.microsoft.com/0611a238-7405-4d5f-ace0-5b3d5cf325e0
 
 v1.1 adds Unicode, VS2015 support, both regular and verbatim strings.
+v1.2 adds Paste as Byte Array, C++ support (thanks to leg0)
 
 ![Screenshot](Screenshot.png?raw=true)
 
