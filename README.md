@@ -1,6 +1,6 @@
-# SmartPaster 2013/2015
+# SmartPaster 2013/2015/2017
 
-A port of Alex Papadimoulis' Smart Paster for Visual Studio 2013 and 2015.
+A port of Alex Papadimoulis' Smart Paster for Visual Studio 2013, 2015 and 2017.
 (via SmartPaster 2010 for Visual Studio 2010 and 2012: https://smartpaster2010.codeplex.com/)
 
 A "Paste As" right-click option that allows clipboard text to be:
@@ -16,6 +16,7 @@ http://visualstudiogallery.msdn.microsoft.com/0611a238-7405-4d5f-ace0-5b3d5cf325
 
 v1.1 adds Unicode, VS2015 support, both regular and verbatim strings.
 v1.2 adds Paste as Byte Array, C++ support (thanks to leg0)
+v1.3 adds VS2017 support, renamed to SmartPaster2017
 
 ![Screenshot](Screenshot.png?raw=true)
 

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
   <Metadata>
-    <Identity Id="233fade6-f9e1-4a0d-8784-089004c574fc" Version="1.2" Language="en-US" Publisher="Martin Willey" />
-    <DisplayName>SmartPaster2013</DisplayName>
+    <Identity Id="233fade6-f9e1-4a0d-8784-089004c574fc" Version="1.3" Language="en-US" Publisher="Martin Willey" />
+    <DisplayName>SmartPaster2017</DisplayName>
     <Description xml:space="preserve">Paste clipboard into comments or strings in C#, VB, C++</Description>
     <MoreInfo>https://github.com/martinjw/SmartPaster2013</MoreInfo>
     <License>License.txt</License>
@@ -21,4 +21,7 @@
   <Assets>
     <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
   </Assets>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0.26004.1,16.0)" DisplayName="Visual Studio core editor" />
+  </Prerequisites>
 </PackageManifest>
