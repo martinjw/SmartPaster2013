@@ -50,31 +50,31 @@ namespace SmartPaster2013_UnitTests.MenuItemTests
             Assert.IsNotNull(mcs.FindCommand(menuCommandID));
         }
 
-        [TestMethod]
-        public void MenuItemCallback()
-        {
-            // Create the package
-            IVsPackage package = new SmartPaster2013Package() as IVsPackage;
-            Assert.IsNotNull(package, "The object does not implement IVsPackage");
+        //[TestMethod]
+        //public void MenuItemCallback()
+        //{
+        //    // Create the package
+        //    IVsPackage package = new SmartPaster2013Package() as IVsPackage;
+        //    Assert.IsNotNull(package, "The object does not implement IVsPackage");
 
-            // Create a basic service provider
-            OleServiceProvider serviceProvider = OleServiceProvider.CreateOleServiceProviderWithBasicServices();
+        //    // Create a basic service provider
+        //    OleServiceProvider serviceProvider = OleServiceProvider.CreateOleServiceProviderWithBasicServices();
 
-            // Create a UIShell service mock and proffer the service so that it can called from the MenuItemCallback method
-            BaseMock uishellMock = UIShellServiceMock.GetUiShellInstance();
-            serviceProvider.AddService(typeof(SVsUIShell), uishellMock, true);
+        //    // Create a UIShell service mock and proffer the service so that it can called from the MenuItemCallback method
+        //    BaseMock uishellMock = UIShellServiceMock.GetUiShellInstance();
+        //    serviceProvider.AddService(typeof(SVsUIShell), uishellMock, true);
 
-            // Site the package
-            Assert.AreEqual(0, package.SetSite(serviceProvider), "SetSite did not return S_OK");
+        //    // Site the package
+        //    Assert.AreEqual(0, package.SetSite(serviceProvider), "SetSite did not return S_OK");
 
-            //Invoke private method on package class and observe that the method does not throw
-            System.Reflection.MethodInfo info = package.GetType().GetMethod("MenuItemCallback", BindingFlags.Instance | BindingFlags.NonPublic);
-            Assert.IsNotNull(info, "Failed to get the private method MenuItemCallback throug refplection");
-            info.Invoke(package, new object[] { null, null });
+        //    //Invoke private method on package class and observe that the method does not throw
+        //    System.Reflection.MethodInfo info = package.GetType().GetMethod("MenuItemCallback", BindingFlags.Instance | BindingFlags.NonPublic);
+        //    Assert.IsNotNull(info, "Failed to get the private method MenuItemCallback throug refplection");
+        //    info.Invoke(package, new object[] { null, null });
 
-            //Clean up services
-            serviceProvider.RemoveService(typeof(SVsUIShell));
+        //    //Clean up services
+        //    serviceProvider.RemoveService(typeof(SVsUIShell));
 
-        }
+        //}
     }
 }
