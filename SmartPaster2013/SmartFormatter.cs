@@ -152,6 +152,12 @@ namespace SmartPaster2013
             return sb.ToString();
         }
 
+        public static string CommentizeInXml(string txt)
+        {
+            //we don't need to escape < or >, just --
+            return string.Concat("<!-- ", txt.Replace("--", "=="), " -->");
+        }
+
         public static string StringbuilderizeInCs(string txt, string sbName)
         {
             //sb to work with

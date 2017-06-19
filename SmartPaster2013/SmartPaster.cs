@@ -68,6 +68,16 @@ namespace SmartPaster2013
                 application.UndoContext.Close();
         }
 
+        private static bool IsXml(DTE2 application)
+        {
+            var caption = application.ActiveWindow.Caption;
+            foreach (var ext in new [] { ".xml", ".xsd", ".config", ".xaml"})
+            {
+                if (caption.EndsWith(ext, StringComparison.OrdinalIgnoreCase))
+                    return true;
+            }
+            return false;
+        }
         private static bool IsVb(DTE2 application)
         {
             return application.ActiveWindow.Caption.EndsWith(".vb", StringComparison.OrdinalIgnoreCase);
@@ -155,9 +165,20 @@ namespace SmartPaster2013
         /// <param name="application">application to insert</param>
         public void PasteAsComment(DTE2 application)
         {
-            Paste(application, IsVb(application) ?
-                SmartFormatter.CommentizeInVb(ClipboardText) :
-                SmartFormatter.CommentizeInCs(ClipboardText));
+            string text;
+            if (IsVb(application))
+            {
+                text = SmartFormatter.CommentizeInVb(ClipboardText);
+            }
+            else if (IsXml(application))
+            {
+                text = SmartFormatter.CommentizeInXml(ClipboardText);
+            }
+            else
+            {
+                text = SmartFormatter.CommentizeInCs(ClipboardText);
+            }
+            Paste(application, text);
         }
 
 
