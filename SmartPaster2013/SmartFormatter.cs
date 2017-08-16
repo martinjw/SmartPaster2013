@@ -39,6 +39,7 @@ namespace SmartPaster2013
             //escape appropriately
             //escape the quotes with ""
             txt = txt.Trim() //ignore leading and trailing blank lines
+                .Replace("\\", "\\\\") //escape backslashes
                 .Replace(Quote, "\\\"") //escape quotes
                 .Replace("\t", "\\t") //escape tabs
                 .Replace("\r", "\\r") //cr
@@ -52,7 +53,11 @@ namespace SmartPaster2013
         public static string LiterallyInCxx(string txt)
         {
             var lines = from line in txt.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None)
-                        select "\"" + line.Replace("\"", "\\\"").Replace("\t", @"\t") + "\"";
+                select "\"" + line
+                           .Replace("\\", "\\\\")
+                           .Replace("\"", "\\\"")
+                           .Replace("\t", @"\t")
+                       + "\"";
             return String.Join("\r\n", lines);
         }
 

@@ -45,6 +45,21 @@ This has a " + "\t tab and \"\" quotes but this \\t is not an escape\"", result)
             Assert.AreEqual("\"我给你一本书 。\" + Environment.NewLine + \r\n\"This has a \\t tab and \\\" quotes but this \\t is not an escape\"", result);
         }
 
+        [TestMethod]
+        public void TestLiteralStringCsPath()
+        {
+            var path = @"C:\x\y\x";
+            var result = SmartFormatter.LiterallyInCs(path);
+            Assert.AreEqual("\"C:\\\\x\\\\y\\\\x\"", result);
+        }
+
+        [TestMethod]
+        public void TestLiteralStringCxxPath()
+        {
+            var path = @"C:\x\y\x";
+            var result = SmartFormatter.LiterallyInCxx(path);
+            Assert.AreEqual("\"C:\\\\x\\\\y\\\\x\"", result);
+        }
 
         [TestMethod]
         public void TestLiteralStringWithEmptyLinesCs()
