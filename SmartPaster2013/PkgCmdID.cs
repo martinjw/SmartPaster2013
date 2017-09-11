@@ -11,6 +11,7 @@ namespace SmartPaster2013
         public const uint cmdidPasteAsVerbatimString = 0x102;
         public const uint cmdidPasteAsStringBuilder = 0x103;
         public const uint cmdidPasteAsBytes = 0x104;
+        public const uint cmdidPasteWithReplace = 0x105;
 
     };
 }
