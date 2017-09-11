@@ -112,6 +112,14 @@
           <ButtonText>Paste As StringBuilder</ButtonText>
         </Strings>
       </Button>
+      <Button guid="guidSmartPaster2013CmdSet" id="cmdidPasteWithReplace" priority="0x0100" type="Button">
+        <Parent guid="guidSmartPaster2013CmdSet" id="SubMenu" />
+        <Icon guid="guidSmartPaste" id="bmpPaste" />
+        <Strings>
+          <ButtonText>Paste with Replace</ButtonText>
+        </Strings>
+      </Button>
+
 
 
     </Buttons>
@@ -148,6 +156,7 @@
       <IDSymbol name="cmdidPasteAsVerbatimString" value="0x0102" />
       <IDSymbol name="cmdidPasteAsStringBuilder" value="0x0103" />
       <IDSymbol name="cmdidPasteAsBytes" value="0x0104" />
+      <IDSymbol name="cmdidPasteWithReplace" value="0x105" />
     </GuidSymbol>
 
     <GuidSymbol name="guidSmartPaste" value="{362530CF-350B-4997-B740-BAA96C37564D}">

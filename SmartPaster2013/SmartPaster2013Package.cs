@@ -83,6 +83,10 @@ namespace SmartPaster2013
                 var menuCommandID = new CommandID(GuidList.guidSmartPaster2013CmdSet, (int)PkgCmdIDList.cmdidPasteAsComment);
                 var menuItem = new MenuCommand(CallPasteAsComment, menuCommandID);
                 mcs.AddCommand(menuItem);
+                
+                var menuCommandReplaceID = new CommandID(GuidList.guidSmartPaster2013CmdSet, (int)PkgCmdIDList.cmdidPasteWithReplace);
+                var menuItemReplace = new MenuCommand(CallPasteWithReplace, menuCommandReplaceID);
+                mcs.AddCommand(menuItemReplace);
 
             }
         }
@@ -128,6 +132,13 @@ namespace SmartPaster2013
             var dte = (DTE2)GetService(typeof(DTE));
             var sp = new SmartPaster();
             sp.PasteAsVerbatimString(dte);
+        }
+
+        private void CallPasteWithReplace(object sender, EventArgs e)
+        {
+            var dte = (DTE2)GetService(typeof(DTE));
+            var sp = new SmartPaster();
+            sp.PasteWithReplace(dte);
         }
 
     }

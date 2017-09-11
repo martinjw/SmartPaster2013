@@ -211,6 +211,24 @@ namespace SmartPaster2013
                 SmartFormatter.StringbuilderizeInCs(ClipboardText, stringbuilder));
         }
 
+        public void PasteWithReplace(DTE2 application)
+        {
+            var replaceForm = new ReplaceForm();
+
+            // Show testDialog as a modal dialog and determine if DialogResult = OK.
+            if (replaceForm.ShowDialog() == DialogResult.OK)
+            {
+                var src = replaceForm.TextToReplace;
+                var dst = replaceForm.ReplaceText;
+                var txt = ClipboardText.Replace(src, dst);
+                Paste(application, txt);
+            }
+            else
+            {
+            }
+            replaceForm.Dispose();
+        }
+
         #endregion
     }
 }
