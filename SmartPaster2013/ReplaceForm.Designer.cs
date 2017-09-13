@@ -75,7 +75,7 @@
             // 
             this.pasteButton.Location = new System.Drawing.Point(485, 70);
             this.pasteButton.Name = "pasteButton";
-            this.pasteButton.Size = new System.Drawing.Size(84, 23);
+            this.pasteButton.Size = new System.Drawing.Size(84, 29);
             this.pasteButton.TabIndex = 4;
             this.pasteButton.Text = "Paste";
             this.pasteButton.UseVisualStyleBackColor = true;
@@ -85,7 +85,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(581, 101);
+            this.ClientSize = new System.Drawing.Size(581, 104);
             this.Controls.Add(this.pasteButton);
             this.Controls.Add(this.ReplaceWithLabel);
             this.Controls.Add(this.FindLabel);
