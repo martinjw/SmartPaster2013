@@ -44,8 +44,9 @@ namespace SmartPaster2013
                 .Replace("\t", "\\t") //escape tabs
                 .Replace("\r", "\\r") //cr
                 .Replace("\n", "\\n") //lf
+                //.Replace("\"\" + ", "") //"" +
                 .Replace("\\r\\n", "\" + Environment.NewLine + \r\n\"") //escaped crlf to Env.NewLine
-                .Replace("\"\" + ", ""); //"" + 
+                ;  
 
             return Quote + txt + Quote;
         }

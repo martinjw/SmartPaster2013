@@ -42,7 +42,8 @@ This has a " + "\t tab and \"\" quotes but this \\t is not an escape\"", result)
                     "This has a   tab and \" quotes but this \t is not an escape";
 
             //Tab and quote is escaped, line is turned into NewLine
-            Assert.AreEqual("\"我给你一本书 。\" + Environment.NewLine + \r\n\"This has a \\t tab and \\\" quotes but this \\t is not an escape\"", result);
+            Assert.AreEqual(@"""我给你一本书 。"" + Environment.NewLine + 
+""This has a \t tab and \"" quotes but this \\t is not an escape""", result);
         }
 
         [TestMethod]
@@ -76,7 +77,18 @@ Environment.NewLine +
 "2";
 
             //Tab and quote is escaped, line is turned into NewLine
-            Assert.AreEqual("\"1\" + Environment.NewLine + \r\nEnvironment.NewLine + \r\n\"2\"", result);
+            Assert.AreEqual("\"1\" + Environment.NewLine + \r\n\"\" + Environment.NewLine + \r\n\"2\"", result);
+        }
+
+        [TestMethod]
+        public void TestLiteralWithLineBreak()
+        {
+            var s = @"select ""Id"", ""max"", ""Prefs""
+ from rs.""table"";";
+            var result = SmartFormatter.LiterallyInCs(s);
+
+            Assert.AreEqual(
+                "\"select \\\"Id\\\", \\\"max\\\", \\\"Prefs\\\"\" + Environment.NewLine + \r\n\" from rs.\\\"table\\\";\"", result);
         }
 
 
