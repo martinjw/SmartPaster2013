@@ -39,7 +39,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SmartPaster2013</RootNamespace>
-    <AssemblyName>SmartPaster2017</AssemblyName>
+    <AssemblyName>SmartPaster2019</AssemblyName>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>Key.snk</AssemblyOriginatorKeyFile>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
