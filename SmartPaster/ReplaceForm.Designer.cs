@@ -33,14 +33,15 @@
             this.FindLabel = new System.Windows.Forms.Label();
             this.ReplaceWithLabel = new System.Windows.Forms.Label();
             this.pasteButton = new System.Windows.Forms.Button();
+            this.labClipboard = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // findTextBox
             // 
             this.findTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.findTextBox.Location = new System.Drawing.Point(82, 11);
-            this.findTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.findTextBox.Location = new System.Drawing.Point(84, 31);
+            this.findTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.findTextBox.Name = "findTextBox";
             this.findTextBox.Size = new System.Drawing.Size(345, 20);
             this.findTextBox.TabIndex = 0;
@@ -49,8 +50,8 @@
             // 
             this.replaceWithTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.replaceWithTextBox.Location = new System.Drawing.Point(82, 33);
-            this.replaceWithTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.replaceWithTextBox.Location = new System.Drawing.Point(84, 53);
+            this.replaceWithTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.replaceWithTextBox.Name = "replaceWithTextBox";
             this.replaceWithTextBox.Size = new System.Drawing.Size(345, 20);
             this.replaceWithTextBox.TabIndex = 1;
@@ -58,7 +59,7 @@
             // FindLabel
             // 
             this.FindLabel.AutoSize = true;
-            this.FindLabel.Location = new System.Drawing.Point(9, 13);
+            this.FindLabel.Location = new System.Drawing.Point(11, 33);
             this.FindLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.FindLabel.Name = "FindLabel";
             this.FindLabel.Size = new System.Drawing.Size(30, 13);
@@ -68,7 +69,7 @@
             // ReplaceWithLabel
             // 
             this.ReplaceWithLabel.AutoSize = true;
-            this.ReplaceWithLabel.Location = new System.Drawing.Point(9, 37);
+            this.ReplaceWithLabel.Location = new System.Drawing.Point(11, 57);
             this.ReplaceWithLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.ReplaceWithLabel.Name = "ReplaceWithLabel";
             this.ReplaceWithLabel.Size = new System.Drawing.Size(72, 13);
@@ -77,8 +78,8 @@
             // 
             // pasteButton
             // 
-            this.pasteButton.Location = new System.Drawing.Point(82, 57);
-            this.pasteButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pasteButton.Location = new System.Drawing.Point(84, 77);
+            this.pasteButton.Margin = new System.Windows.Forms.Padding(2);
             this.pasteButton.Name = "pasteButton";
             this.pasteButton.Size = new System.Drawing.Size(345, 19);
             this.pasteButton.TabIndex = 4;
@@ -86,17 +87,27 @@
             this.pasteButton.UseVisualStyleBackColor = true;
             this.pasteButton.Click += new System.EventHandler(this.pasteButton_Click);
             // 
+            // labClipboard
+            // 
+            this.labClipboard.AutoSize = true;
+            this.labClipboard.Location = new System.Drawing.Point(81, 9);
+            this.labClipboard.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labClipboard.Name = "labClipboard";
+            this.labClipboard.Size = new System.Drawing.Size(0, 13);
+            this.labClipboard.TabIndex = 5;
+            // 
             // ReplaceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 82);
+            this.ClientSize = new System.Drawing.Size(436, 106);
+            this.Controls.Add(this.labClipboard);
             this.Controls.Add(this.pasteButton);
             this.Controls.Add(this.ReplaceWithLabel);
             this.Controls.Add(this.FindLabel);
             this.Controls.Add(this.replaceWithTextBox);
             this.Controls.Add(this.findTextBox);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ReplaceForm";
             this.Text = "Find/Replace in paste text";
             this.ResumeLayout(false);
@@ -111,5 +122,6 @@
         private System.Windows.Forms.Label FindLabel;
         private System.Windows.Forms.Label ReplaceWithLabel;
         private System.Windows.Forms.Button pasteButton;
+        private System.Windows.Forms.Label labClipboard;
     }
 }

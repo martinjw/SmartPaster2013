@@ -1,16 +1,16 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmartPaster;
+using System;
 
-namespace SmartPaster_UnitTests
+namespace SmartPasterTests
 {
     [TestClass]
     public class SmartFormatterTests
     {
         /*
-我给你一本书 。
-This has a   tab and " quotes but this \t is not an escape
-        */
+ 我给你一本书 。
+ This has a   tab and " quotes but this \t is not an escape
+         */
         //我给你一本书 。
         //This has a   tab and " quotes but this \t is not an escape
 
@@ -91,7 +91,6 @@ Environment.NewLine +
                 "\"select \\\"Id\\\", \\\"max\\\", \\\"Prefs\\\"\" + Environment.NewLine + \r\n\" from rs.\\\"table\\\";\"", result);
         }
 
-
         [TestMethod]
         public void TestVerbatimStringVb()
         {
@@ -101,7 +100,6 @@ Environment.NewLine +
             Assert.AreEqual("\"我给你一本书 。\r\nThis has a \t tab and \"\" quotes but this \\t is not an escape\"", result);
         }
 
-
         [TestMethod]
         public void TestLiteralStringVb()
         {
@@ -110,7 +108,6 @@ Environment.NewLine +
             //No verbatim in VB up to 14, so we just use literals with vbCrLf and line continuation
             Assert.AreEqual("\"我给你一本书 。\" & vbCrLf & _\r\n\"This has a \" & vbTab & \" tab and \"\"\"\" quotes but this \\t is not an escape\"", result);
         }
-
 
         [TestMethod]
         public void TestLiteralStringWithEmptyLinesVb()
@@ -126,7 +123,6 @@ Environment.NewLine +
             //You could use xml literals...
             Assert.AreEqual("\"1\" & vbCrLf & _\r\nvbCrLf & _\r\n\"2\"", result);
         }
-
 
         [TestMethod]
         public void TestCommentCs()
@@ -171,7 +167,6 @@ sb.AppendLine(@""This has a 	 tab and """" quotes but this \t is not an escape""
 ", result);
         }
 
-
         [TestMethod]
         public void TestStringBuilderVb()
         {
@@ -183,7 +178,5 @@ sb.AppendLine(""我给你一本书 。"")
 sb.AppendLine(""This has a 	 tab and """" quotes but this \t is not an escape"")
 ", result);
         }
-
-
     }
 }

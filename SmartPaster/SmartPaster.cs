@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms; //clipboard
 using EnvDTE;
-using EnvDTE80;
 using System.Text;
 
 namespace SmartPaster
@@ -12,9 +11,9 @@ namespace SmartPaster
     internal sealed class SmartPaster
     {
         /// <summary>
-        ///  Convient property to retrieve the clipboard text from the clipboard
+        ///  Convenient property to retrieve the clipboard text from the clipboard
         /// </summary>
-        private static string ClipboardText
+        public static string ClipboardText
         {
             get
             {
@@ -36,7 +35,7 @@ namespace SmartPaster
         /// </summary>
         /// <param name="application">application with activewindow</param>
         /// <param name="text">text to insert</param>
-        private static void Paste(DTE2 application, string text)
+        private static void Paste(DTE application, string text)
         {
             //get the text document
             var txt = (TextDocument)application.ActiveDocument.Object("TextDocument");
@@ -68,7 +67,7 @@ namespace SmartPaster
                 application.UndoContext.Close();
         }
 
-        private static bool IsXml(DTE2 application)
+        private static bool IsXml(DTE application)
         {
             var caption = application.ActiveWindow.Caption;
             foreach (var ext in new [] { ".xml", ".xsd", ".config", ".xaml"})
@@ -78,27 +77,26 @@ namespace SmartPaster
             }
             return false;
         }
-        private static bool IsVb(DTE2 application)
+        private static bool IsVb(DTE application)
         {
             return application.ActiveWindow.Caption.EndsWith(".vb", StringComparison.OrdinalIgnoreCase);
         }
-        private static bool IsCs(DTE2 application)
+        private static bool IsCs(DTE application)
         {
             return application.ActiveWindow.Caption.EndsWith(".cs", StringComparison.OrdinalIgnoreCase);
         }
 
-        private static bool IsCxx(DTE2 application)
+        private static bool IsCxx(DTE application)
         {
             return application.ActiveDocument.Language == "C/C++";
         }
-        #region "Paste As ..."
 
         /// <summary>
         /// Public method to paste and format clipboard text as string the cursor
         /// location for the configured or active window's langage .
         /// </summary>
         /// <param name="application">application to insert</param>
-        public void PasteAsString(DTE2 application)
+        public void PasteAsString(DTE application)
         {
             string text;
             if (IsVb(application))
@@ -112,7 +110,7 @@ namespace SmartPaster
             Paste(application, text);
         }
 
-        public void PasteAsBytes(DTE2 application)
+        public void PasteAsBytes(DTE application)
         {
             if (IsCxx(application) || IsCs(application))
             {
@@ -135,7 +133,7 @@ namespace SmartPaster
         /// Pastes as verbatim string.
         /// </summary>
         /// <param name="application">The application.</param>
-        public void PasteAsVerbatimString(DTE2 application)
+        public void PasteAsVerbatimString(DTE application)
         {
             if (IsVb(application))
             {
@@ -163,7 +161,7 @@ namespace SmartPaster
         /// location for the configured or active window's langage .
         /// </summary>
         /// <param name="application">application to insert</param>
-        public void PasteAsComment(DTE2 application)
+        public void PasteAsComment(DTE application)
         {
             string text;
             if (IsVb(application))
@@ -186,7 +184,7 @@ namespace SmartPaster
         /// Public method to paste format clipboard text into a specified region
         /// </summary>
         /// <param name="application">application to insert</param>
-        public void PasteAsRegion(DTE2 application)
+        public void PasteAsRegion(DTE application)
         {
             //get the region name
             const string region = "myRegion";
@@ -203,7 +201,7 @@ namespace SmartPaster
         /// location for the configured or active window's langage .
         /// </summary>
         /// <param name="application">application to insert</param>
-        public void PasteAsStringBuilder(DTE2 application)
+        public void PasteAsStringBuilder(DTE application)
         {
             const string stringbuilder = "sb";
             Paste(application, IsVb(application) ?
@@ -211,7 +209,7 @@ namespace SmartPaster
                 SmartFormatter.StringbuilderizeInCs(ClipboardText, stringbuilder));
         }
 
-        public void PasteWithReplace(DTE2 application)
+        public void PasteWithReplace(DTE application)
         {
             using (var replaceForm = new ReplaceForm())
             {
@@ -225,6 +223,5 @@ namespace SmartPaster
             }
         }
 
-        #endregion
     }
 }
