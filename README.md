@@ -1,7 +1,9 @@
-# SmartPaster 2013/2015/2017
+# SmartPaster 2013/2015/2017/2019
 
 A port of Alex Papadimoulis' Smart Paster for Visual Studio 2013, 2015 and 2017.
 (via SmartPaster 2010 for Visual Studio 2010 and 2012: https://smartpaster2010.codeplex.com/)
+
+For VS 2022, see https://github.com/martinjw/SmartPaster (marketplace: https://marketplace.visualstudio.com/items?itemName=martinw.SmartPaster )
 
 A "Paste As" right-click option that allows clipboard text to be:
 
