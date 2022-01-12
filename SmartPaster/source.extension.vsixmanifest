@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+    <Metadata>
+        <Identity Id="233fade6-f9e1-4a0d-8784-089004c574fc" Version="1.6" Language="en-US" Publisher="Martin Willey" />
+        <DisplayName>SmartPaster2019</DisplayName>
+        <Description xml:space="preserve">Paste clipboard into comments or strings in C#, VB, C++</Description>
+        <MoreInfo>https://github.com/martinjw/SmartPaster</MoreInfo>
+        <License>License.txt</License>
+        <Icon>Resources/Package.ico</Icon>
+        <Tags>PasteAs Verbatim StringBuilder Comment</Tags>
+    </Metadata>
+    <Installation InstalledByMsi="false">
+        <InstallationTarget Id="Microsoft.VisualStudio.Community" Version="[14.0,)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Pro" Version="[12.0,)" />
+        <InstallationTarget Id="Microsoft.VisualStudio.Enterprise" Version="[14.0,)" />
+    </Installation>
+    <Dependencies>
+        <Dependency Id="Microsoft.Framework.NDP" DisplayName="Microsoft .NET Framework" d:Source="Manual" Version="[4.5,)" />
+        <Dependency Id="Microsoft.VisualStudio.MPF.12.0" DisplayName="Visual Studio MPF 12.0" d:Source="Installed" Version="[12.0]" />
+    </Dependencies>
+    <Assets>
+        <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+    </Assets>
+    <Prerequisites>
+        <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0.26004.1,)" DisplayName="Visual Studio core editor" />
+    </Prerequisites>
+</PackageManifest>
